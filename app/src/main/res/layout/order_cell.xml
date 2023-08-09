@@ -5,6 +5,7 @@
     android:layout_height="wrap_content">
 
     <ImageView
+        android:contentDescription="@string/icon_example"
         android:id="@+id/icon_cell"
         android:layout_width="100dp"
         android:layout_height="100dp"
@@ -34,7 +35,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/snack_title"
-        android:gravity="end"
         tools:text="R$ 20,00" />
 
 
