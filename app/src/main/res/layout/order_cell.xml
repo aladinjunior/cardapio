@@ -1,19 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <ImageView
-        android:id="@+id/icon"
-        android:src="@mipmap/ic_launcher_round"
-        android:layout_width="50dp"
-        android:layout_height="50dp"/>
+        android:id="@+id/icon_cell"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/hamburguer" />
 
     <TextView
-        android:layout_toEndOf="@id/icon"
-        android:layout_marginTop="20dp"
-        android:text="test"
+        android:id="@+id/snack_title"
+        style="@style/TextViewCell"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/icon_cell"
+        tools:text="HAMBURGUER 1" />
+
+    <Button
+        android:id="@+id/snack_time_required"
+        style="@style/TimeRequiredButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/snack_title"
+        android:layout_toEndOf="@id/icon_cell"
+        android:drawableLeft="@drawable/ic_time"
+        tools:text="45-55min" />
+
+    <TextView
+        android:id="@+id/snack_price"
+        style="@style/SnackCellPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/snack_title"
+        android:gravity="end"
+        tools:text="R$ 20,00" />
+
 
 </RelativeLayout>
