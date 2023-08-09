@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -15,20 +16,16 @@
             android:layout_height="match_parent">
 
             <androidx.appcompat.widget.Toolbar
-                android:background="@color/orange"
+                android:id="@+id/main_toolbar"
+                style="@style/AppTheme"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
 
             <TextView
-                android:textStyle="bold"
-                android:layout_marginTop="5dp"
-                android:fontFamily="sans-serif-light"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textSize="20sp"
+                style="@style/ToolbarStyleTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Hello World!"/>
+                android:text="@string/app_name" />
 
 
         </FrameLayout>
@@ -36,4 +33,9 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-</RelativeLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_main"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent" />
+
+</LinearLayout>
