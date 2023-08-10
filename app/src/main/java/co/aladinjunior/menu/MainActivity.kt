@@ -26,17 +26,11 @@ class MainActivity : AppCompatActivity() {
 
         val orderList = mutableListOf<CellOrder>()
 
-        orderList.add(
-            CellOrder(
-                snackTitle = R.string.hamburguer1_title ,
-                snackPrice = R.string.hamburguer1_price)
-        )
-        orderList.add(
-            CellOrder(
-                snackTitle = R.string.hamburguer2_title,
-                snackPrice = R.string.hamburguer2_price
-            )
-        )
+        for (i in 1 until 11)  {
+            val hambuguerTitle = resources.getString(R.string.hamburguer1_title, i)
+            val x = CellOrder(snackTitle = hambuguerTitle, snackPrice = R.string.hamburguer1_price)
+            orderList.add(x)
+        }
 
         val adapter = Adapter(orderList)
         val rv = findViewById<RecyclerView>(R.id.rv_main)
