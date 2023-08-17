@@ -39,6 +39,13 @@
         <item name="android:layout_marginEnd">15dp</item>
         <item name="android:gravity">end</item>
     </style>
+
+    <style name="AddToOrderButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="strokeWidth">1.4dp</item>
+        <item name="strokeColor">@color/black_lighter</item>
+        <item name="fontFamily">@font/bergentext_semibold</item>
+
+    </style>
     
     
     

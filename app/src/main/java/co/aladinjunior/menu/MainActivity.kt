@@ -9,11 +9,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import org.w3c.dom.Text
+import co.aladinjunior.menu.model.Snack
 
 class MainActivity : AppCompatActivity() {
-
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,14 +19,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
+        val orderList = mutableListOf<Snack>()
 
-
-
-        val orderList = mutableListOf<CellOrder>()
-
-        for (i in 1 until 11)  {
+        for (i in 1 until 11) {
             val hambuguerTitle = resources.getString(R.string.hamburguer1_title, i)
-            val x = CellOrder(snackTitle = hambuguerTitle, snackPrice = R.string.hamburguer1_price)
+            val x = Snack(id = 1, name = hambuguerTitle, price = R.string.hamburguer1_price)
             orderList.add(x)
         }
 
@@ -39,10 +34,11 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private inner class Adapter(private val orderList: List<CellOrder>) : RecyclerView.Adapter<Adapter.ViewHolder>(){
+    private inner class Adapter(private val orderList: List<Snack>) :
+        RecyclerView.Adapter<Adapter.ViewHolder>() {
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-            val view = layoutInflater.inflate(R.layout.order_cell, parent, false)
+            val view = layoutInflater.inflate(R.layout.snack_item, parent, false)
             return ViewHolder(view)
         }
 
@@ -56,15 +52,15 @@ class MainActivity : AppCompatActivity() {
         }
 
         inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-            fun bind(order: CellOrder) {
+            fun bind(order: Snack) {
                 val snackTitle = itemView.findViewById<TextView>(R.id.snack_title)
                 val snackPrice = itemView.findViewById<TextView>(R.id.snack_price)
                 val snackIcon = itemView.findViewById<ImageView>(R.id.icon_cell)
                 val requiredSnackTime = itemView.findViewById<Button>(R.id.snack_time_required)
-                snackIcon.setImageResource(order.orderIcon)
-                requiredSnackTime.setText(order.snackRequiredTime)
-                snackTitle.setText(order.snackTitle)
-                snackPrice.setText(order.snackPrice)
+                snackIcon.setImageResource(order.icon)
+                requiredSnackTime.setText(order.requiredTime)
+                snackTitle.setText(order.name)
+                snackPrice.setText(order.price)
 
             }
 
@@ -72,7 +68,6 @@ class MainActivity : AppCompatActivity() {
 
 
     }
-
 
 
 }

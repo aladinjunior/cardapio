@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".DetailedSnackActivity">
+
+
+    <androidx.appcompat.widget.Toolbar
+
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:navigationIcon="@drawable/ic_baseline_menu_24"/>
+
+    <ImageView
+        android:id="@+id/return_arrow"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/toolbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_baseline_arrow_back_ios_24"/>
+
+    <ImageView
+        android:id="@+id/detailed_snack_icon"
+        android:layout_below="@id/return_arrow"
+        android:layout_marginHorizontal="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_width="320dp"
+        android:layout_height="200dp"
+        android:src="@drawable/hamburguer_black" />
+
+    <TextView
+        android:id="@+id/detailed_snack_name"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="30dp"
+        android:layout_below="@id/detailed_snack_icon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:text="@string/snack_name"
+        android:fontFamily="@font/bergentext_bold" />
+
+    <TextView
+        android:layout_below="@id/detailed_snack_name"
+        android:layout_marginTop="20dp"
+        android:textSize="18sp"
+        android:paddingHorizontal="20dp"
+        android:id="@+id/snack_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/gray_darker"
+        android:text="@string/description"
+        android:fontFamily="@font/bergentext_semibold"/>
+
+    <TextView
+        android:id="@+id/detailed_snack_price"
+        android:text="@string/detailed_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:layout_below="@id/snack_description"
+        android:layout_marginTop="32dp"
+        android:layout_marginStart="40dp"
+        android:textColor="@color/orange_lighter"
+        android:fontFamily="@font/bergentext_bold"
+
+        />
+
+    <Button
+        android:layout_below="@id/snack_description"
+        android:layout_toEndOf="@id/detailed_snack_price"
+        android:id="@+id/outlinedButton"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+
+        android:paddingVertical="10dp"
+        android:layout_marginTop="20dp"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:text="@string/add_to_order"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        style="@style/AddToOrderButton"
+        />
+
+
+</RelativeLayout>

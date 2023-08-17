@@ -6,4 +6,8 @@
     <string name="hamburguer1_price">R$ 20,00</string>
     <string name="hamburguer2_title">HAMBURGUER 2</string>
     <string name="hamburguer2_price">R$ 30,00</string>
+    <string name="snack_name">Hamburguer Black</string>
+    <string name="description">hello world hello worldhello world hello world hello world hello worldhello world hello world hello world hello worldhello world hello world hello world hello worldhello world hello world hello world hello worldhello world hello world hello world hello worldhello world hello world hello world hello worldhello world hello world hello world hello worldhello world hello world</string>
+    <string name="detailed_price">R$30.00</string>
+    <string name="add_to_order">Add to Order</string>
 </resources>
