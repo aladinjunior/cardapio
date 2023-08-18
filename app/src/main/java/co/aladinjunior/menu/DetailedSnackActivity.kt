@@ -8,14 +8,19 @@ import androidx.appcompat.app.AppCompatActivity
 
 class DetailedSnackActivity : AppCompatActivity() {
 
+    private lateinit var icon: ImageView
+    private lateinit var name: TextView
+    private lateinit var price: TextView
+    private lateinit var arrowBack: ImageView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detailed_snack)
 
-        val icon = findViewById<ImageView>(R.id.detailed_snack_icon)
-        val name = findViewById<TextView>(R.id.detailed_snack_name)
-        val price = findViewById<TextView>(R.id.detailed_snack_price)
-        val arrowBack = findViewById<ImageView>(R.id.return_arrow)
+         icon = findViewById(R.id.detailed_snack_icon)
+         name = findViewById(R.id.detailed_snack_name)
+         price = findViewById(R.id.detailed_snack_price)
+         arrowBack = findViewById(R.id.return_arrow)
 
 
         val id =
@@ -26,11 +31,28 @@ class DetailedSnackActivity : AppCompatActivity() {
         val previusName =
             intent?.extras?.getString("name") ?: throw IllegalStateException("nenhum nome encontrado!")
 
+
         arrowBack.setOnClickListener {
             finish()
         }
 
-        price.setText(resources.getString(R.string.detailed_price, previusPrice))
+        setLayoutComponents(id, previusPrice, previusName)
+
+
+
+
+
+    }
+
+    private fun setLayoutComponents(id: Int, previusPrice: Double, previusName: String){
+
+        if (id == 1){
+            val rPrice = resources.getString(R.string.detailed_price, previusPrice)
+            price.setText(rPrice)
+            val rName = resources.getString(R.string.detailed_name, previusName)
+            name.setText(rName)
+            icon.setImageResource(R.drawable.hamburguer_black)
+        }
 
         if (id == 2){
             val rPrice = resources.getString(R.string.detailed_price, previusPrice)

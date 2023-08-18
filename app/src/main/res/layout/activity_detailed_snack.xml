@@ -41,7 +41,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/black"
         android:textSize="30sp"
-        android:text="@string/snack_name"
+        tools:text="@string/snack_name"
         android:fontFamily="@font/bergentext_bold" />
 
     <TextView
@@ -58,7 +58,7 @@
 
     <TextView
         android:id="@+id/detailed_snack_price"
-        android:text="@string/detailed_price"
+        tools:text="@string/detailed_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="24sp"
