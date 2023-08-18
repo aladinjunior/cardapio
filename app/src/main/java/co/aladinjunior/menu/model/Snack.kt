@@ -9,7 +9,7 @@ data class Snack(
     @DrawableRes val icon: Int = R.drawable.hamburguer,
     val name: String,
     @StringRes val requiredTime: Int = R.string.required_time,
-    @StringRes val price: Int
+    val price: Double
 
 )
 

@@ -1,11 +1,13 @@
 package co.aladinjunior.menu
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -19,20 +21,30 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
-        val orderList = mutableListOf<Snack>()
+        val snacks = listOf(
+            Snack(
+                id = 1,
+                icon = R.drawable.hamburguer_black,
+                name = "Hambúrguer Black",
+                price = 30.0
+            ),
+            Snack(
+                id = 2,
+                icon = R.drawable.hamburguer_normal,
+                name = "Hambúrguer Simples",
+                price = 20.0
+            )
+        )
 
-        for (i in 1 until 11) {
-            val hambuguerTitle = resources.getString(R.string.hamburguer1_title, i)
-            val x = Snack(id = 1, name = hambuguerTitle, price = R.string.hamburguer1_price)
-            orderList.add(x)
-        }
 
-        val adapter = Adapter(orderList)
+
+        val adapter = Adapter(snacks)
         val rv = findViewById<RecyclerView>(R.id.rv_main)
         rv.layoutManager = LinearLayoutManager(this)
         rv.adapter = adapter
 
     }
+
 
     private inner class Adapter(private val orderList: List<Snack>) :
         RecyclerView.Adapter<Adapter.ViewHolder>() {
@@ -60,7 +72,16 @@ class MainActivity : AppCompatActivity() {
                 snackIcon.setImageResource(order.icon)
                 requiredSnackTime.setText(order.requiredTime)
                 snackTitle.setText(order.name)
-                snackPrice.setText(order.price)
+                snackPrice.setText(resources.getString(R.string.detailed_price, order.price))
+
+                val container = itemView as RelativeLayout
+                container.setOnClickListener {
+                    val i = Intent(this@MainActivity, DetailedSnackActivity::class.java)
+                        .putExtra("id", order.id)
+                        .putExtra("price", order.price)
+                        .putExtra("name", order.name)
+                    startActivity(i)
+                }
 
             }
 
