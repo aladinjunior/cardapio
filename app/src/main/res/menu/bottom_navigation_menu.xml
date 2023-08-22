@@ -7,16 +7,16 @@
     <item android:id="@+id/nav_home"
         android:title="@string/home"
         android:enabled="true"
-        android:icon="@drawable/ic_baseline_star_rate_24"/>
+        android:icon="@drawable/ic_baseline_home_24"/>
 
     <item android:id="@+id/nav_orders"
         android:title="@string/orders"
         android:enabled="true"
-        android:icon="@drawable/ic_baseline_star_rate_24"/>
+        android:icon="@drawable/ic_baseline_menu_book_24"/>
 
     <item android:id="@+id/nav_profile"
         android:title="@string/profile"
         android:enabled="true"
-        android:icon="@drawable/ic_baseline_star_rate_24"/>
+        android:icon="@drawable/ic_baseline_person_24"/>
 
 </menu>

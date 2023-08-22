@@ -24,75 +24,17 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
-        val snacks = listOf(
-            Snack(
-                id = 1,
-                icon = R.drawable.hamburguer_black,
-                name = "Hambúrguer Black",
-                price = 30.0
-            ),
-            Snack(
-                id = 2,
-                icon = R.drawable.hamburguer_normal,
-                name = "Hambúrguer Simples",
-                price = 20.0
-            )
-        )
+        val navController = findNavController(R.id.nav_host_fragment_container)
+        val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        bottomNavigation.setupWithNavController(navController)
 
 
 
-        val adapter = Adapter(snacks)
-        val rv = findViewById<RecyclerView>(R.id.rv_main)
-        rv.layoutManager = LinearLayoutManager(this)
-        rv.adapter = adapter
-        
-
-    }
-
-
-    private inner class Adapter(private val orderList: List<Snack>) :
-        RecyclerView.Adapter<Adapter.ViewHolder>() {
-
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-            val view = layoutInflater.inflate(R.layout.snack_item, parent, false)
-            return ViewHolder(view)
-        }
-
-        override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-            val currentItem = orderList[position]
-            holder.bind(currentItem)
-        }
-
-        override fun getItemCount(): Int {
-            return orderList.size
-        }
-
-        inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-            fun bind(order: Snack) {
-                val snackTitle = itemView.findViewById<TextView>(R.id.snack_title)
-                val snackPrice = itemView.findViewById<TextView>(R.id.snack_price)
-                val snackIcon = itemView.findViewById<ImageView>(R.id.icon_cell)
-                val requiredSnackTime = itemView.findViewById<Button>(R.id.snack_time_required)
-                snackIcon.setImageResource(order.icon)
-                requiredSnackTime.setText(order.requiredTime)
-                snackTitle.setText(order.name)
-                snackPrice.setText(resources.getString(R.string.detailed_price, order.price))
-
-                val container = itemView as RelativeLayout
-                container.setOnClickListener {
-                    val i = Intent(this@MainActivity, DetailedSnackActivity::class.java)
-                        .putExtra("id", order.id)
-                        .putExtra("price", order.price)
-                        .putExtra("name", order.name)
-                    startActivity(i)
-                }
-
-            }
-
-        }
 
 
     }
+
+    
 
 
 }
