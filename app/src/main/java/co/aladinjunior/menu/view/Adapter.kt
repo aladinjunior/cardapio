@@ -12,9 +12,13 @@ import co.aladinjunior.menu.R
 import co.aladinjunior.menu.model.Snack
 
 class Adapter(
-    private val snackList: List<Snack>,
+    private var snackList: List<Snack> = emptyList(),
     private val context: Context
 ) : RecyclerView.Adapter<Adapter.ViewHolder>() {
+
+    fun updateSnacks(snacks: List<Snack>){
+        snackList = snacks
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.snack_item, parent, false)
@@ -38,10 +42,8 @@ class Adapter(
             val requiredSnackTime = itemView.findViewById<Button>(R.id.snack_time_required)
             snackIcon.setImageResource(snack.icon)
             requiredSnackTime.setText(snack.requiredTime)
-            snackTitle.setText(snack.name)
-            val x = context.resources.getString(R.string.detailed_price, snack.price)
-            snackPrice.setText(x)
-
+            snackTitle.text = snack.name
+            snackPrice.setText(context.resources.getString(R.string.detailed_price, snack.price))
 
             val container = itemView as RelativeLayout
             container.setOnClickListener {
