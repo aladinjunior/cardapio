@@ -2,14 +2,10 @@ package co.aladinjunior.menu.view
 
 import android.content.Context
 import android.content.Intent
-import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.*
-import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.RecyclerView
-import co.aladinjunior.menu.DetailedSnackActivity
+import co.aladinjunior.menu.detailed.view.DetailedSnackActivity
 import co.aladinjunior.menu.R
 import co.aladinjunior.menu.databinding.SnackItemBinding
 import co.aladinjunior.menu.model.Snack
@@ -59,6 +55,7 @@ class Adapter(
                     .putExtra("id", snack.id)
                     .putExtra("price", snack.price)
                     .putExtra("name", snack.name)
+                    .putExtra("icon", snack.icon)
                 context.startActivity(i)
 
 

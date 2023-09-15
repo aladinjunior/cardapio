@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Menu">
-        <activity android:name=".DetailedSnackActivity"
+        <activity android:name=".detailed.view.DetailedSnackActivity"
             android:exported="true">
 
 
