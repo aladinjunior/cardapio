@@ -1,13 +1,15 @@
-package co.aladinjunior.menu.data
+package co.aladinjunior.menu.main.data
 
 import android.os.Handler
 import android.os.Looper
 import co.aladinjunior.menu.R
 import co.aladinjunior.menu.model.Snack
 
-class RemoteDataSource {
+class FakeHomeRequest : HomeDataSource {
 
-    fun fakeRequest(callback: Callback) {
+
+    override fun getSnacks(callback: HomeCallback) {
+
         Handler(Looper.getMainLooper()).postDelayed({
             val response = listOf(
                 Snack(
@@ -26,7 +28,6 @@ class RemoteDataSource {
             callback.onSuccess(response)
             callback.onComplete()
         }, 2000)
+
     }
-
-
 }

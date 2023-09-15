@@ -1,4 +1,4 @@
-package co.aladinjunior.menu.view
+package co.aladinjunior.menu.main.view
 
 import android.content.Context
 import android.content.Intent
