@@ -2,13 +2,16 @@ package co.aladinjunior.menu.view
 
 import android.content.Context
 import android.content.Intent
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.RecyclerView
 import co.aladinjunior.menu.DetailedSnackActivity
 import co.aladinjunior.menu.R
+import co.aladinjunior.menu.databinding.SnackItemBinding
 import co.aladinjunior.menu.model.Snack
 
 class Adapter(
@@ -16,13 +19,14 @@ class Adapter(
     private val context: Context
 ) : RecyclerView.Adapter<Adapter.ViewHolder>() {
 
-    fun updateSnacks(snacks: List<Snack>){
+
+    fun updateSnacks(snacks: List<Snack>) {
         snackList = snacks
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.snack_item, parent, false)
-        return ViewHolder(view)
+        return ViewHolder(SnackItemBinding.bind(view))
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -34,19 +38,23 @@ class Adapter(
         return snackList.size
     }
 
-    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    inner class ViewHolder(private val binding: SnackItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(snack: Snack) {
-            val snackTitle = itemView.findViewById<TextView>(R.id.snack_title)
-            val snackPrice = itemView.findViewById<TextView>(R.id.snack_price)
-            val snackIcon = itemView.findViewById<ImageView>(R.id.icon_cell)
-            val requiredSnackTime = itemView.findViewById<Button>(R.id.snack_time_required)
-            snackIcon.setImageResource(snack.icon)
-            requiredSnackTime.setText(snack.requiredTime)
-            snackTitle.text = snack.name
-            snackPrice.setText(context.resources.getString(R.string.detailed_price, snack.price))
+            with(binding) {
+                snackTitle.text = snack.name
+                iconCell.setImageResource(snack.icon)
+                snackTimeRequired.setText(snack.requiredTime)
+                snackPrice.setText(
+                    context.resources.getString(
+                        R.string.detailed_price,
+                        snack.price
+                    )
+                )
+            }
 
-            val container = itemView as RelativeLayout
-            container.setOnClickListener {
+            binding.container.setOnClickListener {
+
                 val i = Intent(context, DetailedSnackActivity::class.java)
                     .putExtra("id", snack.id)
                     .putExtra("price", snack.price)
